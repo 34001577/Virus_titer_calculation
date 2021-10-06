@@ -1,1 +1,2 @@
 # Virus_titer_calculation
+The source file provides a function for virus titer calculation by modified poisson distribution. After execute this function, a excel file will be automatically generated in your working directory in which you will find the virus titer, A, and B value. Fitting curve(s) will also be generated in the end. The data to be analized must follow LegendBiotech's virus titration SOP.  
