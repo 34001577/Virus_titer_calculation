@@ -6,10 +6,10 @@
 #########THE ONLY THING YOU NEED TO DO IS IMPORT THE DATA########
 ###run this function first#######
 
-Titer_calculation_plot <- function(data, ncol, nrow){
+Titer_calculation_plot <- function(data, ncol, nrow,abs_virusAmount,cellN=50000){
   library(ggplot2)
   data <- data
-  x <-c(6.667, 2.222,0.741,0.247,0.082,0.0273)
+  x <- (1e8*abs_virusAmount)/(cellN*1000)
   #function adapted from poisson modeling.
   #B correction parameter for our theoretical virus titer.
   #A the Among the cells received virus that also expressed protein.
@@ -90,22 +90,11 @@ Titer_calculation_plot <- function(data, ncol, nrow){
           geom_point()+
           ylim(0,105)+
           ggtitle(label = colnames(data)[i])+
-          annotate("text",x=5, y=25, label=paste("Virus titer:",formatC(table$`Virus titer`[i], format='e', digits = 2)))+
-          annotate("text", x=5, y = 15,label=paste("B Value:",formatC(table$`Bvalue`[i], digits = 2)))+
+          annotate("text",x=x[1]*0.8, y=25, label=paste("Virus titer:",formatC(table$`Virus titer`[i], format='e', digits = 2)))+
+          annotate("text", x=x[1]*0.8, y = 15,label=paste("B Value:",formatC(table$`Bvalue`[i], digits = 2)))+
           geom_smooth(se=FALSE, method = 'lm', formula=y~titerFunc(x,table$Avalue[i],table$Bvalue[i]))
       }
     )
   }
   ggpubr::ggarrange(plotlist = myplots, ncol = ncol,nrow = nrow)#please modify ncol and nrow to fit your plot arrangement.
 }
-
-
-
-
-
-
-
-
-
-
-
