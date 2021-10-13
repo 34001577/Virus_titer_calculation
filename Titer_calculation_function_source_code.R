@@ -90,8 +90,8 @@ Titer_calculation_plot <- function(data, ncol, nrow,abs_virusAmount,cellN=50000)
           geom_point()+
           ylim(0,105)+
           ggtitle(label = colnames(data)[i])+
-          annotate("text",x=x[1]*0.8, y=25, label=paste("Virus titer:",formatC(table$`Virus titer`[i], format='e', digits = 2)))+
-          annotate("text", x=x[1]*0.8, y = 15,label=paste("B Value:",formatC(table$`Bvalue`[i], digits = 2)))+
+          annotate("text",x=x[1]*0.75, y=25, label=paste("Virus titer:",formatC(table$`Virus titer`[i], format='e', digits = 2)))+
+          annotate("text", x=x[1]*0.75, y = 15,label=paste("B Value:",formatC(table$`Bvalue`[i], digits = 2)))+
           geom_smooth(se=FALSE, method = 'lm', formula=y~titerFunc(x,table$Avalue[i],table$Bvalue[i]))
       }
     )
