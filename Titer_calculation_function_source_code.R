@@ -33,7 +33,7 @@ Titer_calculation_plot <- function(data, ncol, nrow,abs_virusAmount,cellN=50000)
       coeffB <- cof$coefficients[2,1]
       
       MOI = 1e8*coeffA
-      return(MOI*coeffB)
+      return(MOI)
     }
     
     Bvalue <- function(y){
