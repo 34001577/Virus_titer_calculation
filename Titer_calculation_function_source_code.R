@@ -38,7 +38,7 @@ Titer_calculation_plot <- function(data, ncol, nrow,abs_virusAmount,cellN=50000)
     
     Bvalue <- function(y){
       y = y
-      MOIfit <- nls(y~titerFunc(x,A,B), start = list(A=1, B=1), control = list(maxiter = 500))
+      MOIfit <- nls(y~titerFunc(x,A,B), start = list(A=1, B=1))
       #Save the summary results to cof
       cof <- summary(MOIfit)
       
